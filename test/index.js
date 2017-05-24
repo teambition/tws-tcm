@@ -1,5 +1,6 @@
 'use strict'
 const tman = require('tman')
+const assert = require('power-assert')
 const MemoryStore = require('tws-auth/cache/memory')
 const Client = require('../index')
 
@@ -16,17 +17,15 @@ tman.suite('Client', function () {
   })
 
   tman.it('subscribe', function * () {
-    let result = yield client.subscribe('test_topic', 'test_s_id')
-    console.log(result)
+    assert((yield client.subscribe('test_topic', 'test_s_id')) === null)
   })
 
   tman.it('unsubscribe', function * () {
-    let result = yield client.unsubscribe('test_topic', 'test_s_id')
-    console.log(result)
+    assert((yield client.unsubscribe('test_topic', 'test_s_id')) === null)
   })
 
   tman.it('send', function * () {
-    let result = yield client.send([{
+    assert((yield client.send([{
       'to': 'some_topic',
       'collapse_key': 'collapse_key',
       'time_to_live': 60,
@@ -36,17 +35,19 @@ tman.suite('Client', function () {
       'collapse_key': 'collapse_key',
       'time_to_live': 60,
       'data': 'data2'
-    }])
-    console.log(result)
+    }])) === null)
   })
 
   tman.it('getUserClients', function * () {
     let result = yield client.getUserClients('55c02075283447b14c263fe8')
-    console.log(result)
+
+    assert(typeof result.total === 'number')
+    assert(typeof result.android === 'number')
+    assert(typeof result.ios === 'number')
+    assert(typeof result.web === 'number')
   })
 
   tman.it('sign', function * () {
-    let result = yield client.sign('55c02075283447b14c263fe8', 'source', 2000)
-    console.log(result)
+    assert((yield client.sign('55c02075283447b14c263fe8', 'source', 2000)).length !== 0)
   })
 })

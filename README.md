@@ -28,15 +28,15 @@ const RedisStore = require('tws-auth/cache/redis')
 
   await client.subscribe('some_topic', 'some_session_id')
   await client.send([{
-    'to': 'some_topic',
-    'collapse_key': 'collapse_key',
-    'time_to_live': 60,
-    'data': 'data1'
+    to: 'some_topic',
+    collapse_key: 'collapse_key',
+    time_to_live: 60,
+    data: 'data1'
   }, {
-    'to': 'some_topic',
-    'collapse_key': 'collapse_key',
-    'time_to_live': 60,
-    'data': 'data2'
+    to: 'some_topic',
+    collapse_key: 'collapse_key',
+    time_to_live: 60,
+    data: 'data2'
   }])
 })(console.error)
 ```

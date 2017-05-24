@@ -26,37 +26,7 @@ class Client {
   }
 
   subscribe (topic, _sessionId) {
-    // return this.authClient.auth.authorize()
-    //   .then(function (token) {
-    //     return urllib.request(`${this.options.host}/subscribe`, {
-    //       method: 'POST',
-    //       contentType: 'json',
-    //       dataType: 'json',
-    //       data: { topic, s_id: _sessionId },
-    //       headers: { Authorization: `Bearer ${token}` }
-    //     })
-    //   })
-    //   .then(function (res) {
-    //     return Promise.resolve(assertRes(res))
-    //   })
     return co(function * () {
-      console.log(`${this.options.host}/subscribe`)
-      console.log({
-        method: 'POST',
-        contentType: 'json',
-        dataType: 'json',
-        data: { topic, s_id: _sessionId },
-        headers: { Authorization: `Bearer ${yield this.authClient.auth.authorize()}` }
-      })
-
-      console.log(yield urllib.request(`${this.options.host}/subscribe`, {
-        method: 'POST',
-        contentType: 'json',
-        dataType: 'json',
-        data: { topic, s_id: _sessionId },
-        headers: { Authorization: `Bearer ${yield this.authClient.auth.authorize()}` }
-      }))
-
       return assertRes(yield urllib.request(`${this.options.host}/subscribe`, {
         method: 'POST',
         contentType: 'json',
