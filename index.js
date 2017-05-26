@@ -28,60 +28,39 @@ class Client {
   }
 
   subscribe (topic, _sessionId) {
-    return co(function * () {
-      return assertRes(yield urllib.request(`${this.options.host}/subscribe`, {
-        method: 'POST',
-        contentType: 'json',
-        dataType: 'json',
-        data: { topic, s_id: _sessionId },
-        headers: { Authorization: `Bearer ${yield this.authClient.auth.authorize()}` }
-      }))
-    }.bind(this))
+    return this._requestWithToken('POST', `${this.options.host}/subscribe`, {
+      topic, s_id: _sessionId
+    })
   }
 
   unsubscribe (topic, _sessionId) {
-    return co(function * () {
-      return assertRes(yield urllib.request(`${this.options.host}/unsubscribe`, {
-        method: 'POST',
-        contentType: 'json',
-        dataType: 'json',
-        data: { topic, s_id: _sessionId },
-        headers: { Authorization: `Bearer ${yield this.authClient.auth.authorize()}` }
-      }))
-    }.bind(this))
+    return this._requestWithToken('POST', `${this.options.host}/unsubscribe`, {
+      topic, s_id: _sessionId
+    })
   }
 
   send (body) {
-    return co(function * () {
-      if (!Array.isArray(body)) body = [body]
-
-      return assertRes(yield urllib.request(`${this.options.host}/send`, {
-        method: 'POST',
-        contentType: 'json',
-        dataType: 'json',
-        data: body,
-        headers: { Authorization: `Bearer ${yield this.authClient.auth.authorize()}` }
-      }))
-    }.bind(this))
+    return this._requestWithToken('POST', `${this.options.host}/send`, body)
   }
 
   getUserClients (_userId) {
-    return co(function * () {
-      return assertRes(yield urllib.request(`${this.options.host}/users/${_userId}/clients`, {
-        method: 'GET',
-        dataType: 'json',
-        headers: { Authorization: `Bearer ${yield this.authClient.auth.authorize()}` }
-      }))
-    }.bind(this))
+    return this._requestWithToken('GET',
+      `${this.options.host}/users/${_userId}/clients`)
   }
 
   sign (_userId, source, expire) {
+    return this._requestWithToken('POST',
+      `${this.options.host}/users/${_userId}/sign`, { source, expire })
+  }
+
+  _requestWithToken (method, url, data) {
     return co(function * () {
-      return assertRes(yield urllib.request(`${this.options.host}/users/${_userId}/sign`, {
-        method: 'POST',
+      return assertRes(yield urllib.request(url, {
+        method,
+        data,
         contentType: 'json',
         dataType: 'json',
-        data: { source, expire },
+        timeout: this.options.timeout,
         headers: { Authorization: `Bearer ${yield this.authClient.auth.authorize()}` }
       }))
     }.bind(this))
