@@ -28,15 +28,11 @@ class Client {
   }
 
   subscribe (topic, _sessionId) {
-    return this._requestWithToken('POST', `${this.options.host}/subscribe`, {
-      topic, s_id: _sessionId
-    })
+    return this._requestWithToken('POST', `${this.options.host}/subscribe`, { topic, s_id: _sessionId })
   }
 
   unsubscribe (topic, _sessionId) {
-    return this._requestWithToken('POST', `${this.options.host}/unsubscribe`, {
-      topic, s_id: _sessionId
-    })
+    return this._requestWithToken('POST', `${this.options.host}/unsubscribe`, { topic, s_id: _sessionId })
   }
 
   send (body) {
@@ -44,13 +40,11 @@ class Client {
   }
 
   getUserClients (_userId) {
-    return this._requestWithToken('GET',
-      `${this.options.host}/users/${_userId}/clients`)
+    return this._requestWithToken('GET', `${this.options.host}/users/${_userId}/clients`)
   }
 
   sign (_userId, source, expire) {
-    return this._requestWithToken('POST',
-      `${this.options.host}/users/${_userId}/sign`, { source, expire })
+    return this._requestWithToken('POST', `${this.options.host}/users/${_userId}/sign`, { source, expire })
   }
 
   _requestWithToken (method, url, data) {
