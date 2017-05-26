@@ -15,13 +15,15 @@ class Client {
     this.options.resourceType = options.resourceType || 'app'
     this.options.authHost = options.authHost || 'https://auth.teambitionapis.com'
     this.options.host = options.host || 'https://tcm.teambitionapis.com'
+    this.options.timeout = options.timeout || 2000
 
     this.authClient = new AuthClient({
       appId: this.options.appId,
       appSecret: this.options.appSecret,
       resourceType: this.options.resourceType,
       host: this.options.authHost,
-      cacheStore: this.options.cacheStore
+      cacheStore: this.options.cacheStore,
+      timeout: this.options.timeout
     })
   }
 

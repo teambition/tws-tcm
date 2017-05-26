@@ -19,6 +19,7 @@
   "homepage": "https://github.com/teambition/tws-tcm#readme",
   "dependencies": {
     "co": "^4.6.0",
+    "http-errors": "^1.6.1",
     "tws-auth": "^0.1.0",
     "urllib": "^2.22.0",
     "validator": "^7.0.0"

@@ -4,15 +4,13 @@ const assert = require('power-assert')
 const MemoryStore = require('tws-auth/cache/memory')
 const Client = require('../index')
 
-process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0'
-
 tman.suite('Client', function () {
   let client = new Client({
     cacheStore: new MemoryStore(),
     appId: '58f95e92c06a546f7dab73c7',
     appSecret: 'hello123',
     resourceType: 'self',
-    host: 'https://192.168.0.21:30700',
+    host: 'http://192.168.0.21:30700',
     authHost: 'http://192.168.0.21:31090'
   })
 
