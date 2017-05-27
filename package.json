@@ -1,6 +1,6 @@
 {
   "name": "tws-tcm",
-  "version": "0.1.2",
+  "version": "0.2.0",
   "description": "Node.js SDK of TWS (Teambition Web Service) cloud messaging service",
   "main": "index.js",
   "scripts": {
@@ -20,13 +20,13 @@
   "dependencies": {
     "co": "^4.6.0",
     "http-errors": "^1.6.1",
-    "tws-auth": "^0.1.0",
     "urllib": "^2.22.0",
     "validator": "^7.0.0"
   },
   "devDependencies": {
     "power-assert": "^1.4.2",
     "standard": "^10.0.2",
-    "tman": "^1.6.7"
+    "tman": "^1.6.7",
+    "tws-auth": "^0.2.0"
   }
 }
