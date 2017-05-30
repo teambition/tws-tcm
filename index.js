@@ -2,6 +2,7 @@
 const validator = require('validator')
 const urllib = require('urllib')
 const co = require('co')
+const GrpcClient = require('./grpc')
 const { assertRes } = require('./util/request')
 
 class Client {
@@ -13,6 +14,7 @@ class Client {
     this.options = options
     this.options.host = options.host || 'https://tcm.teambitionapis.com'
     this.options.timeout = options.timeout || 2000
+    this.grpc = new GrpcClient(this.options.host)
   }
 
   subscribe (topic, _sessionId, token) {

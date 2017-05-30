@@ -18,6 +18,7 @@ const Client = require('tws-tcm')
 ;(async function () {
   const client = new Client({ host: 'https://tcm.teambitionapis.com' })
 
+  // HTTP
   await client.subscribe('some_topic', 'some_session_id', 'access_token')
   await client.send([{
     to: 'some_topic',
@@ -30,6 +31,9 @@ const Client = require('tws-tcm')
     time_to_live: 60,
     data: 'data2'
   }], 'access_token')
+
+  // GRPC
+  await client.grpc.unsubscribe('some_topic', 'some_session_id')
 })(console.error)
 ```
 
@@ -50,3 +54,15 @@ new Client({ host })
 #### Class Method: getUserClients(_userId)
 
 #### Class Method: sign(_userId, source, expire)
+
+### GRPC Class Method
+
+#### Class Method: gpc.subscribe(topic, _sessionId)
+
+#### Class Method: gpc.unsubscribe(topic, _sessionId)
+
+#### Class Method: gpc.send(body)
+
+#### Class Method: gpc.getUserClients(_userId)
+
+#### Class Method: gpc.sign(_userId, source, expire)

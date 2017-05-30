@@ -9,11 +9,12 @@ tman.suite('Client', function () {
   let authClient = new AuthClient({
     host: 'http://121.196.214.67:31090',
     appId: '59294da476d70b4b83fa91a5',
-    appSecret: 'hello123'
+    appSecret: 'hello123',
+    timeout: 30000
   })
 
   let token
-  tman.beforeEach(function * () {
+  tman.before(function * () {
     token = yield authClient.auth.authorize('59294da476d70b4b83fa91a5', 'self')
   })
 
