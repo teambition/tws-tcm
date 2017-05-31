@@ -1,35 +1,49 @@
 'use strict'
 const tman = require('tman')
 const assert = require('power-assert')
+const AuthClient = require('tws-auth')
 const GrpcClient = require('../grpc')
 
-tman.suite('Client', function () {
-  let client = new GrpcClient('http://192.168.0.21:30700')
+tman.suite('GRPC Client', function () {
+  let client = new GrpcClient('192.168.0.21:30700')
+
+  let authClient = new AuthClient({
+    host: 'http://192.168.0.21:31090',
+    appId: '58f95e92c06a546f7dab73c7',
+    appSecret: 'hello123',
+    timeout: 30000
+  })
+
+  let token
+  tman.before(function * () {
+    // token = yield authClient.auth.authorize('59294da476d70b4b83fa91a5', 'self')
+    token = yield authClient.auth.authorize('58f95e92c06a546f7dab73c7', 'self')
+  })
 
   tman.it('subscribe', function * () {
-    assert((yield client.subscribe('test_topic', 'test_s_id')) === null)
+    assert((yield client.subscribe('test_topic', 'test_s_id'), token) === null)
   })
 
   tman.it('unsubscribe', function * () {
-    assert((yield client.unsubscribe('test_topic', 'test_s_id')) === null)
+    assert((yield client.unsubscribe('test_topic', 'test_s_id'), token) === null)
   })
 
   tman.it('send', function * () {
     assert((yield client.send([{
-      'to': 'some_topic',
-      'collapse_key': 'collapse_key',
-      'time_to_live': 60,
-      'data': 'data1'
+      to: 'some_topic',
+      collapse_key: 'collapse_key',
+      time_to_live: 60,
+      data: 'data1'
     }, {
-      'to': 'some_topic',
-      'collapse_key': 'collapse_key',
-      'time_to_live': 60,
-      'data': 'data2'
-    }])) === null)
+      to: 'some_topic',
+      collapse_key: 'collapse_key',
+      time_to_live: 60,
+      data: 'data2'
+    }], token)) === null)
   })
 
   tman.it('getUserClients', function * () {
-    let result = yield client.getUserClients('55c02075283447b14c263fe8')
+    let result = yield client.getUserClients('55c02075283447b14c263fe8', token)
 
     assert(typeof result.total === 'number')
     assert(typeof result.android === 'number')
@@ -38,6 +52,6 @@ tman.suite('Client', function () {
   })
 
   tman.it('sign', function * () {
-    assert((yield client.sign('55c02075283447b14c263fe8', 'source', 2000)).length !== 0)
+    assert((yield client.sign('55c02075283447b14c263fe8', 'source', 2000, token)).length !== 0)
   })
 })

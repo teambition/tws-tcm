@@ -33,7 +33,7 @@ const Client = require('tws-tcm')
   }], 'access_token')
 
   // GRPC
-  await client.grpc.unsubscribe('some_topic', 'some_session_id')
+  await client.grpc.unsubscribe('some_topic', 'some_session_id', 'access_token')
 })(console.error)
 ```
 
@@ -45,24 +45,24 @@ new Client({ host })
 
 - host `String` : Host URL of TWS cloud messaging service, by default is `'https://tcm.teambitionapis.com'`.
 
-#### Class Method: subscribe(topic, _sessionId)
+#### Class Method: subscribe(topic, _sessionId, token)
 
-#### Class Method: unsubscribe(topic, _sessionId)
+#### Class Method: unsubscribe(topic, _sessionId, token)
 
-#### Class Method: send(body)
+#### Class Method: send(body, token)
 
-#### Class Method: getUserClients(_userId)
+#### Class Method: getUserClients(_userId, token)
 
-#### Class Method: sign(_userId, source, expire)
+#### Class Method: sign(_userId, source, expire, token)
 
 ### GRPC Class Method
 
-#### Class Method: gpc.subscribe(topic, _sessionId)
+#### Class Method: gpc.subscribe(topic, _sessionId, token)
 
-#### Class Method: gpc.unsubscribe(topic, _sessionId)
+#### Class Method: gpc.unsubscribe(topic, _sessionId, token)
 
-#### Class Method: gpc.send(body)
+#### Class Method: gpc.send(body, token)
 
-#### Class Method: gpc.getUserClients(_userId)
+#### Class Method: gpc.getUserClients(_userId, token)
 
-#### Class Method: gpc.sign(_userId, source, expire)
+#### Class Method: gpc.sign(_userId, source, expire, token)

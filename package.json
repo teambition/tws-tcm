@@ -20,10 +20,8 @@
   "dependencies": {
     "co": "^4.6.0",
     "grpc": "^1.3.2",
-    "grpc-promise": "^1.0.8",
     "http-errors": "^1.6.1",
-    "urllib": "^2.22.0",
-    "validator": "^7.0.0"
+    "urllib": "^2.22.0"
   },
   "devDependencies": {
     "power-assert": "^1.4.2",

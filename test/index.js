@@ -4,18 +4,27 @@ const assert = require('power-assert')
 const AuthClient = require('tws-auth')
 const Client = require('../index')
 
+process.env.NODE_TLS_REJECT_UNAUTHORIZED = 0
+
 tman.suite('Client', function () {
-  let client = new Client({ host: 'http://192.168.0.21:30700' })
+  let client = new Client({ host: 'https://192.168.0.21:30700' })
+  // let authClient = new AuthClient({
+  //   host: 'http://121.196.214.67:31090',
+  //   appId: '59294da476d70b4b83fa91a5',
+  //   appSecret: 'hello123',
+  //   timeout: 30000
+  // })
   let authClient = new AuthClient({
-    host: 'http://121.196.214.67:31090',
-    appId: '59294da476d70b4b83fa91a5',
+    host: 'http://192.168.0.21:31090',
+    appId: '58f95e92c06a546f7dab73c7',
     appSecret: 'hello123',
     timeout: 30000
   })
 
   let token
   tman.before(function * () {
-    token = yield authClient.auth.authorize('59294da476d70b4b83fa91a5', 'self')
+    // token = yield authClient.auth.authorize('59294da476d70b4b83fa91a5', 'self')
+    token = yield authClient.auth.authorize('58f95e92c06a546f7dab73c7', 'self')
   })
 
   tman.it('subscribe', function * () {
@@ -28,15 +37,15 @@ tman.suite('Client', function () {
 
   tman.it('send', function * () {
     assert((yield client.send([{
-      'to': 'some_topic',
-      'collapse_key': 'collapse_key',
-      'time_to_live': 60,
-      'data': 'data1'
+      to: 'some_topic',
+      collapse_key: 'collapse_key',
+      time_to_live: 60,
+      data: 'data1'
     }, {
-      'to': 'some_topic',
-      'collapse_key': 'collapse_key',
-      'time_to_live': 60,
-      'data': 'data2'
+      to: 'some_topic',
+      collapse_key: 'collapse_key',
+      time_to_live: 60,
+      data: 'data2'
     }], token)) === null)
   })
 

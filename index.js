@@ -1,5 +1,4 @@
 'use strict'
-const validator = require('validator')
 const urllib = require('urllib')
 const co = require('co')
 const GrpcClient = require('./grpc')
@@ -7,10 +6,6 @@ const { assertRes } = require('./util/request')
 
 class Client {
   constructor (options) {
-    if (!validator.isMongoId(options.appId)) {
-      throw new Error(`appId: ${options.appId} is not a valid mongo id`)
-    }
-
     this.options = options
     this.options.host = options.host || 'https://tcm.teambitionapis.com'
     this.options.timeout = options.timeout || 2000
