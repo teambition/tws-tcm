@@ -7,24 +7,17 @@ const Client = require('../index')
 process.env.NODE_TLS_REJECT_UNAUTHORIZED = 0
 
 tman.suite('Client', function () {
-  let client = new Client({ host: 'https://192.168.0.21:30700' })
-  // let authClient = new AuthClient({
-  //   host: 'http://121.196.214.67:31090',
-  //   appId: '59294da476d70b4b83fa91a5',
-  //   appSecret: 'hello123',
-  //   timeout: 30000
-  // })
+  let client = new Client({ host: 'https://121.196.214.67:31094' })
   let authClient = new AuthClient({
-    host: 'http://192.168.0.21:31090',
-    appId: '58f95e92c06a546f7dab73c7',
+    host: 'http://121.196.214.67:31090',
+    appId: '59294da476d70b4b83fa91a5',
     appSecret: 'hello123',
     timeout: 30000
   })
 
   let token
   tman.before(function * () {
-    // token = yield authClient.auth.authorize('59294da476d70b4b83fa91a5', 'self')
-    token = yield authClient.auth.authorize('58f95e92c06a546f7dab73c7', 'self')
+    token = yield authClient.auth.authorize('59294da476d70b4b83fa91a5', 'self')
   })
 
   tman.it('subscribe', function * () {
@@ -50,7 +43,7 @@ tman.suite('Client', function () {
   })
 
   tman.it('getUserClients', function * () {
-    let result = yield client.getUserClients('55c02075283447b14c263fe8', token)
+    let result = yield client.getUserClients('59294da476d70b4b83fa91a0', token)
 
     assert(typeof result.total === 'number')
     assert(typeof result.android === 'number')
@@ -59,6 +52,6 @@ tman.suite('Client', function () {
   })
 
   tman.it('sign', function * () {
-    assert((yield client.sign('55c02075283447b14c263fe8', 'source', 2000, token)).length !== 0)
+    assert((yield client.sign('59294da476d70b4b83fa91a0', 'source', 2000, token)).length !== 0)
   })
 })

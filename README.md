@@ -16,7 +16,7 @@ npm install tws-tcm
 const Client = require('tws-tcm')
 
 ;(async function () {
-  const client = new Client({ host: 'https://tcm.teambitionapis.com' })
+  const client = new Client({ host: 'http://tcm.teambitionapis.com' })
 
   // HTTP
   await client.subscribe('some_topic', 'some_session_id', 'access_token')
@@ -41,9 +41,13 @@ const Client = require('tws-tcm')
 
 ### Class: Client
 
-new Client({ host })
+new Client({ host, [timeout, certPath, privateKey, certChain] })
 
 - host `String` : Host URL of TWS cloud messaging service, by default is `'https://tcm.teambitionapis.com'`.
+- timeout `Number` : Optional, requst timeout in milliseconds, by default is `2000`.
+- rootCert `Buffer` : Optional, the client root certificate.
+- privateKey `Buffer` : Optional, the client certificate private key.
+- certChain `Buffer` : Optional, the client certificate cert chain.
 
 #### Class Method: subscribe(topic, _sessionId, token)
 

@@ -1,4 +1,5 @@
 'use strict'
+const url = require('url')
 const urllib = require('urllib')
 const co = require('co')
 const GrpcClient = require('./grpc')
@@ -9,7 +10,13 @@ class Client {
     this.options = options
     this.options.host = options.host || 'https://tcm.teambitionapis.com'
     this.options.timeout = options.timeout || 2000
-    this.grpc = new GrpcClient(this.options.host)
+
+    this.grpc = new GrpcClient(
+      url.parse(this.options.host).host,
+      this.options.rootCert,
+      this.options.privateKey,
+      this.options.certChain
+    )
   }
 
   subscribe (topic, _sessionId, token) {
@@ -25,7 +32,7 @@ class Client {
   }
 
   getUserClients (_userId, token) {
-    return this._requestWithToken('GET', `${this.options.host}/users/${_userId}/clients`, token)
+    return this._requestWithToken('GET', `${this.options.host}/users/${_userId}/clients`, {}, token)
   }
 
   sign (_userId, source, expire, token) {
@@ -39,6 +46,9 @@ class Client {
         data,
         contentType: 'json',
         dataType: 'json',
+        ca: this.options.rootCert,
+        key: this.options.privateKey,
+        cert: this.options.certChain,
         timeout: this.options.timeout,
         headers: { Authorization: `Bearer ${token}` }
       }))

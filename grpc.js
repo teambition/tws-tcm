@@ -6,11 +6,20 @@ const PROTO_PATH = path.join(__dirname, './proto/broker.proto')
 const Proto = grpc.load(PROTO_PATH).outerbroker
 
 class Client {
-  constructor (address, credentials) {
+  constructor (address, rootCerts, privateKey, certChain) {
+    let credentials
+    if (rootCerts) {
+      let sslOptions = [rootCerts]
+      if (privateKey && certChain) sslOptions.concat(Buffer.from(privateKey), Buffer.from(certChain))
+      credentials = grpc.credentials.createSsl(...sslOptions)
+    } else {
+      credentials = grpc.credentials.createInsecure()
+    }
+
     this.outerBrokerClient = new Proto.OuterBroker(
       address,
-      grpc.credentials.createInsecure(),
-      { 'grpc.primary_user_agent': 'tws-tcm' }
+      credentials,
+      { 'grpc.primary_user_agent': 'tws-tcm-node-client' }
     )
   }
 
@@ -41,7 +50,7 @@ class Client {
 
       this.outerBrokerClient[method](args, meta, function (err, response) {
         if (err) return reject(err)
-        return resolve(response.message)
+        return resolve(response)
       })
     })
   }
