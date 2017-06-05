@@ -4,7 +4,7 @@ const path = require('path')
 const tman = require('tman')
 const assert = require('power-assert')
 const AuthClient = require('tws-auth')
-const GrpcClient = require('../grpc')
+const GrpcClient = require('../lib/grpc')
 
 tman.suite('GRPC Client', function () {
   const rootCert = fs.readFileSync(path.join(__dirname, './test_root.crt'))

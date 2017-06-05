@@ -2,7 +2,7 @@
 const tman = require('tman')
 const assert = require('power-assert')
 const AuthClient = require('tws-auth')
-const Client = require('../index')
+const Client = require('../lib/http')
 
 process.env.NODE_TLS_REJECT_UNAUTHORIZED = 0
 

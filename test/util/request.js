@@ -1,7 +1,7 @@
 'use strict'
 const tman = require('tman')
 const assert = require('power-assert')
-const requestUtil = require('../../util/request')
+const requestUtil = require('../../lib/util/request')
 
 tman.suite('util - request', function () {
   tman.suite('assertRes', function () {
