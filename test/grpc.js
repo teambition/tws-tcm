@@ -13,7 +13,7 @@ tman.suite('GRPC Client', function () {
   let authClient = new AuthClient({
     host: 'http://121.196.214.67:31090',
     appId: '59294da476d70b4b83fa91a5',
-    appSecret: 'hello123',
+    appSecret: process.env.APP_SECRET,
     timeout: 30000
   })
 
