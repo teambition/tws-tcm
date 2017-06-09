@@ -57,7 +57,7 @@ new Client({ host, [timeout, certPath, privateKey, certChain] })
 
 #### Class Method: getUserClients(_userId, token)
 
-#### Class Method: sign(_userId, source, expire, token)
+#### Class Method: sign(_userId, source, token)
 
 ### GRPC Class Method
 
@@ -69,4 +69,4 @@ new Client({ host, [timeout, certPath, privateKey, certChain] })
 
 #### Class Method: gpc.getUserClients(_userId, token)
 
-#### Class Method: gpc.sign(_userId, source, expire, token)
+#### Class Method: gpc.sign(_userId, source, token)

@@ -11,7 +11,7 @@ tman.suite('GRPC Client', function () {
   let client = new GrpcClient('121.196.214.67:31094', rootCert)
 
   let authClient = new AuthClient({
-    host: 'http://121.196.214.67:31090',
+    host: 'https://121.196.214.67:31090',
     appId: '59294da476d70b4b83fa91a5',
     appSecret: process.env.APP_SECRET,
     timeout: 30000
@@ -58,6 +58,6 @@ tman.suite('GRPC Client', function () {
   })
 
   tman.it('sign', function * () {
-    assert((yield client.sign('55c02075283447b14c263fe8', 'source', 2000, token)).length !== 0)
+    assert((yield client.sign('55c02075283447b14c263fe8', 'source', token)).length !== 0)
   })
 })

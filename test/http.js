@@ -9,7 +9,7 @@ process.env.NODE_TLS_REJECT_UNAUTHORIZED = 0
 tman.suite('Client', function () {
   let client = new Client({ host: 'https://121.196.214.67:31094' })
   let authClient = new AuthClient({
-    host: 'http://121.196.214.67:31090',
+    host: 'https://121.196.214.67:31090',
     appId: '59294da476d70b4b83fa91a5',
     appSecret: process.env.APP_SECRET,
     timeout: 30000
@@ -52,6 +52,6 @@ tman.suite('Client', function () {
   })
 
   tman.it('sign', function * () {
-    assert((yield client.sign('59294da476d70b4b83fa91a0', 'source', 2000, token)).length !== 0)
+    assert((yield client.sign('59294da476d70b4b83fa91a0', 'source', token)).length !== 0)
   })
 })

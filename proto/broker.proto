@@ -51,7 +51,6 @@ message ListClientsResponse {
 message SignRequest {
   string user_id = 1;
   string source = 2;
-  int32 expire = 3;
 }
 message SignResponse {
   string token = 1;
