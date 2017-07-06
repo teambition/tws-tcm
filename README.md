@@ -16,7 +16,9 @@ npm install tws-tcm
 const Client = require('tws-tcm')
 
 ;(async function () {
-  const client = new Client({ host: 'http://tcm.teambitionapis.com' })
+  const client = new Client({
+    host: 'http://tcm.teambitionapis.com'
+  })
 
   // HTTP
   await client.subscribe('some_topic', 'some_session_id', 'access_token')
@@ -33,7 +35,11 @@ const Client = require('tws-tcm')
   }], 'access_token')
 
   // GRPC
-  await client.grpc.unsubscribe('some_topic', 'some_session_id', 'access_token')
+  const grpcClient = new Client({
+    host: 'http://tcm.teambitionapis.com',
+    mode: 'GRPC'
+  })
+  await grpcClient.unsubscribe('some_topic', 'some_session_id', 'access_token')
 })(console.error)
 ```
 
@@ -45,6 +51,7 @@ new Client({ host, [timeout, certPath, privateKey, certChain] })
 
 - host `String` : Host URL of TWS cloud messaging service, by default is `'https://tcm.teambitionapis.com'`.
 - timeout `Number` : Optional, requst timeout in milliseconds, by default is `2000`.
+- mode `String` : Whether to use `HTTP` or `GRPC`, by default if `HTTP`.
 - rootCert `Buffer` : Optional, the client root certificate.
 - privateKey `Buffer` : Optional, the client certificate private key.
 - certChain `Buffer` : Optional, the client certificate cert chain.
@@ -58,15 +65,3 @@ new Client({ host, [timeout, certPath, privateKey, certChain] })
 #### Class Method: getUserClients(_userId, token)
 
 #### Class Method: sign(_userId, source, token)
-
-### GRPC Class Method
-
-#### Class Method: gpc.subscribe(topic, _sessionId, token)
-
-#### Class Method: gpc.unsubscribe(topic, _sessionId, token)
-
-#### Class Method: gpc.send(body, token)
-
-#### Class Method: gpc.getUserClients(_userId, token)
-
-#### Class Method: gpc.sign(_userId, source, token)

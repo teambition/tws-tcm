@@ -2,11 +2,11 @@
 const tman = require('tman')
 const assert = require('power-assert')
 const AuthClient = require('tws-auth')
-const Client = require('../lib/http')
+const Client = require('../lib/client')
 
 process.env.NODE_TLS_REJECT_UNAUTHORIZED = 0
 
-tman.suite('HTTP Client', function () {
+tman.suite('Client', function () {
   let client = new Client({ host: 'https://121.196.214.67:31094' })
   let authClient = new AuthClient({
     host: 'https://121.196.214.67:31090',

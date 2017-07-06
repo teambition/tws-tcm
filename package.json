@@ -1,8 +1,8 @@
 {
   "name": "tws-tcm",
-  "version": "0.4.4",
+  "version": "0.4.5",
   "description": "Node.js SDK of TWS (Teambition Web Service) cloud messaging service",
-  "main": "index.js",
+  "main": "./lib/client.js",
   "scripts": {
     "lint": "./node_modules/.bin/standard",
     "test": "npm run lint && ./node_modules/.bin/tman 'test/**/*.js'"
