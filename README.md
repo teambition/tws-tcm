@@ -55,6 +55,7 @@ new Client({ host, [timeout, certPath, privateKey, certChain] })
 - rootCert `Buffer` : Optional, the client root certificate.
 - privateKey `Buffer` : Optional, the client certificate private key.
 - certChain `Buffer` : Optional, the client certificate cert chain.
+- addUUID `Boolean`: Optional, whether to add an uuid to the querystring when using HTTP.
 
 #### Class Method: subscribe(topic, _sessionId, token)
 
