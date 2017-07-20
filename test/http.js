@@ -7,6 +7,8 @@ const Client = require('../lib/http')
 process.env.NODE_TLS_REJECT_UNAUTHORIZED = 0
 
 tman.suite('HTTP Client', function () {
+  this.timeout(10000)
+
   let client = new Client({
     host: 'https://121.196.214.67:31094',
     addUUID: true

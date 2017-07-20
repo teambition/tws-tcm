@@ -7,6 +7,8 @@ const AuthClient = require('tws-auth')
 const GrpcClient = require('../lib/grpc')
 
 tman.suite('GRPC Client', function () {
+  this.timeout(10000)
+
   const rootCert = fs.readFileSync(path.join(__dirname, './test_root.crt'))
   let client = new GrpcClient('tcm-demo.teambition.net:1443', rootCert)
 

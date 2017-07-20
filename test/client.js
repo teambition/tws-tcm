@@ -7,6 +7,8 @@ const Client = require('../lib/client')
 process.env.NODE_TLS_REJECT_UNAUTHORIZED = 0
 
 tman.suite('Client', function () {
+  this.timeout(10000)
+
   let client = new Client({ host: 'https://121.196.214.67:31094' })
   let authClient = new AuthClient({
     host: 'https://auth-demo.teambition.net',
