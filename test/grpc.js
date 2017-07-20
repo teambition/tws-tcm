@@ -8,18 +8,18 @@ const GrpcClient = require('../lib/grpc')
 
 tman.suite('GRPC Client', function () {
   const rootCert = fs.readFileSync(path.join(__dirname, './test_root.crt'))
-  let client = new GrpcClient('121.196.214.67:31094', rootCert)
+  let client = new GrpcClient('tcm-demo.teambition.net:1443', rootCert)
 
   let authClient = new AuthClient({
-    host: 'https://121.196.214.67:31090',
-    appId: '59294da476d70b4b83fa91a5',
+    host: 'https://auth-demo.teambition.net',
+    appId: '5937b9e4358c0b00186a902f',
     appSecret: process.env.APP_SECRET,
     timeout: 30000
   })
 
   let token
   tman.before(function * () {
-    token = yield authClient.auth.authorize('59294da476d70b4b83fa91a5', 'self')
+    token = yield authClient.auth.authorize('5937b9e4358c0b00186a902f', 'self')
   })
 
   tman.it('subscribe', function * () {
