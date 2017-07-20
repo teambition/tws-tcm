@@ -10,7 +10,7 @@ tman.suite('GRPC Client', function () {
   this.timeout(10000)
 
   const rootCert = fs.readFileSync(path.join(__dirname, './test_root.crt'))
-  let client = new GrpcClient('tcm-demo.teambition.net:1443', rootCert)
+  let client = new GrpcClient('tcm-demo.teambition.net:1443', 10000, rootCert)
 
   let authClient = new AuthClient({
     host: 'https://auth-demo.teambition.net',
