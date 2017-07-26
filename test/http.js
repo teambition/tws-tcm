@@ -26,11 +26,11 @@ tman.suite('HTTP Client', function () {
   })
 
   tman.it('subscribe', function * () {
-    assert((yield client.subscribe('test_topic', 'test_s_id', token)) === null)
+    assert((yield client.subscribe('test_topic', 'test_s_id', token)) === undefined)
   })
 
   tman.it('unsubscribe', function * () {
-    assert((yield client.unsubscribe('test_topic', 'test_s_id', token)) === null)
+    assert((yield client.unsubscribe('test_topic', 'test_s_id', token)) === undefined)
   })
 
   tman.it('send', function * () {
@@ -44,7 +44,7 @@ tman.suite('HTTP Client', function () {
       collapse_key: 'collapse_key',
       time_to_live: 60,
       data: 'data2'
-    }], token)) === null)
+    }], token)) === undefined)
   })
 
   tman.it('getUserClients', function * () {
