@@ -66,3 +66,5 @@ new Client({ host, [timeout, certPath, privateKey, certChain] })
 #### Class Method: getUserClients(_userId, token)
 
 #### Class Method: sign(_userId, source, token)
+
+#### Class Method: heartBeat(token)
