@@ -59,4 +59,8 @@ tman.suite('HTTP Client', function () {
   tman.it('sign', function * () {
     assert((yield client.sign('59294da476d70b4b83fa91a0', 'source', token)).length !== 0)
   })
+
+  tman.it('heartBeat', function * () {
+    assert((yield client.heartBeat(token)).length !== 0)
+  })
 })
