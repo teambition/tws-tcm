@@ -1,4 +1,5 @@
 'use strict'
+
 const tman = require('tman')
 const assert = require('power-assert')
 const AuthClient = require('tws-auth')

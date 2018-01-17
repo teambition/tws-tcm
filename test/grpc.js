@@ -1,6 +1,5 @@
 'use strict'
-const fs = require('fs')
-const path = require('path')
+
 const tman = require('tman')
 const assert = require('power-assert')
 const AuthClient = require('tws-auth')
@@ -9,8 +8,7 @@ const GrpcClient = require('../lib/grpc')
 tman.suite('GRPC Client', function () {
   this.timeout(10000)
 
-  const rootCert = fs.readFileSync(path.join(__dirname, './test_root.crt'))
-  let client = new GrpcClient('tcm-demo.teambition.net:1443', 10000, rootCert)
+  let client = new GrpcClient('https://tcm-demo.teambition.net:1443', 10000)
 
   let authClient = new AuthClient({
     cacheStore: new AuthClient.MemoryStore(),
