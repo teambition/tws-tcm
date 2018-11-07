@@ -1,27 +1,32 @@
-# tws-tcm
-[![Build Status](https://travis-ci.org/teambition/tws-tcm.svg?branch=master)](https://travis-ci.org/teambition/tws-tcm)
-
+# [tws-auth](https://github.com/teambition/tws-tcm)
 Node.js SDK of TWS (Teambition Web Service) cloud messaging service.
+
+[![NPM version][npm-image]][npm-url]
+[![Build Status][travis-image]][travis-url]
+[![Downloads][downloads-image]][downloads-url]
 
 ## Installation
 
 ```
-npm install tws-tcm
+npm i --save tws-tcm
 ```
 
 ## Usage
 
 ```js
 'use strict'
-const Client = require('tws-tcm')
+const { TCMClient } = require('tws-tcm')
 
 ;(async function () {
-  const client = new Client({
-    host: 'http://tcm.teambitionapis.com'
+  const client = new TCMClient({
+    host: process.env.AUTH_SERVER,
+    appId: process.env.APP_ID,
+    appSecrets: [process.env.APP_SECRET],
+    mode: 'grpc',
   })
 
   // HTTP
-  await client.subscribe('some_topic', 'some_session_id', 'access_token')
+  await client.subscribe('some_topic', 'some_session_id')
   await client.send([{
     to: 'some_topic',
     collapse_key: 'collapse_key',
@@ -32,39 +37,86 @@ const Client = require('tws-tcm')
     collapse_key: 'collapse_key',
     time_to_live: 60,
     data: 'data2'
-  }], 'access_token')
-
-  // GRPC
-  const grpcClient = new Client({
-    host: 'http://tcm.teambitionapis.com',
-    mode: 'GRPC'
-  })
-  await grpcClient.unsubscribe('some_topic', 'some_session_id', 'access_token')
+  }])
 })(console.error)
 ```
 
-## API
+## Documentation
 
-### Class: Client
+```js
+const { TCMClient } = require('tws-tcm')
+```
 
-new Client({ host, [timeout, certPath, privateKey, certChain] })
+### new Client({ appId, appSecret[, host, timeout, cacheStore, rootCert, privateKey, certChain] })
 
-- host `String` : Host URL of TWS cloud messaging service, by default is `'https://tcm.teambitionapis.com'`.
-- timeout `Number` : Optional, requst timeout in milliseconds, by default is `2000`.
-- mode `String` : Whether to use `HTTP` or `GRPC`, by default if `HTTP`.
+- appId `String` : The ID of your TWS application.
+- appSecrets: `[]String` : The secret passwords of your TWS application.
+- host `String` : Optional, host URL of TWS authorization service, by default is `'https://auth.teambitionapis.com'`.
+- timeout `Number` : Optional, requst timeout in milliseconds, by default is `3000`.
 - rootCert `Buffer` : Optional, the client root certificate.
 - privateKey `Buffer` : Optional, the client certificate private key.
 - certChain `Buffer` : Optional, the client certificate cert chain.
-- addUUID `Boolean`: Optional, whether to add an uuid to the querystring when using HTTP.
+- maxSockets `Number` : Optional, the client sockets.
+- time `Boolean` : Optional, enable timing for request.
+- retryDelay `Number` : Optional, delay time for retry, default to 200 ms.
+- maxAttempts `Number` : Optional, max attempts for a request, default to 3 times.
+- retryErrorCodes `[]String` : Optional, error codes that should retry, default to `['ECONNRESET', 'ENOTFOUND', 'ESOCKETTIMEDOUT', 'ETIMEDOUT', 'ECONNREFUSED', 'EHOSTUNREACH', 'EPIPE', 'EAI_AGAIN']`.
+- mode `string`: use HTTP `http` or gRPC `grpc`, default to `http`
 
-#### Class Method: subscribe(topic, _sessionId, token)
+### TCMClient API
+```ts
+/**
+ * Client for TWS (Teambition Web Service) cloud messaging service..
+ */
+export declare class TCMClient {
+    private _client;
+    constructor(options: TCMOptions);
+    /**
+     * subscribe a topic with given sessionId.
+     * @param topic message topic.
+     * @param sessionId user session ID.
+     */
+    subscribe(topic: string, sessionId: string): Promise<void>;
+    /**
+     * unsubscribe a topic with given sessionId.
+     * @param topic message topic.
+     * @param sessionId user session ID.
+     */
+    unsubscribe(topic: string, sessionId: string): Promise<void>;
+    /**
+     * send one or more messages.
+     * @param body message array.
+     */
+    send(body: Message[]): Promise<void>;
+    /**
+     * get online info for given user.
+     * @param userId user ID.
+     */
+    getUserClients(userId: string): Promise<UserClients>;
+    /**
+     * get a TCM token for given user.
+     * @param userId user ID.
+     * @param source client label.
+     */
+    sign(userId: string, source: string): Promise<Token>;
+    /**
+     * Just heart beat.
+     */
+    heartBeat(): Promise<HeartBeat>;
+}
+```
 
-#### Class Method: unsubscribe(topic, _sessionId, token)
+### More: https://teambition.github.io/tws-tcm/
 
-#### Class Method: send(body, token)
+## License
+`tws-tcm` is licensed under the [MIT](https://github.com/teambition/tws-tcm/blob/master/LICENSE) license.
+Copyright &copy; 2017-2018 Teambition.
 
-#### Class Method: getUserClients(_userId, token)
+[npm-url]: https://www.npmjs.com/package/tws-tcm
+[npm-image]: https://img.shields.io/npm/v/tws-tcm.svg
 
-#### Class Method: sign(_userId, source, token)
+[travis-url]: https://travis-ci.org/teambition/tws-tcm
+[travis-image]: http://img.shields.io/travis/teambition/tws-tcm.svg
 
-#### Class Method: heartBeat(token)
+[downloads-url]: https://npmjs.org/package/tws-tcm
+[downloads-image]: https://img.shields.io/npm/dm/tws-tcm.svg?style=flat-square

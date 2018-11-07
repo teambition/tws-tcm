@@ -1,35 +1,58 @@
 syntax = "proto3";
+
 option java_multiple_files = true;
 option java_package = "com.teambition.tcm.outerbroker";
 option java_outer_classname = "OuterBrokerProto";
+
 package outerbroker;
+
 service OuterBroker {
   // Subscribe subscribes the topic for the s_id.
   rpc Subscribe(SubscribeRequest) returns (SubscribeResponse) {}
+
   // Unsubscribe unsubscribes the topic for the s_id.
   rpc Unsubscribe(UnsubscribeRequest) returns (UnsubscribeResponse) {}
+
   // Send sends messages
   rpc Send(SendRequest) returns (SendResponse) {}
+
   // ListClients gets clients of a user
   rpc ListClients(ListClientsRequest) returns (ListClientsResponse) {}
+
   // Sign generates a JWT token for client
   rpc Sign(SignRequest) returns (SignResponse) {}
+
+   // Version for check version or health
+   rpc Version(VersionRequest) returns (VersionResponse) {}
+}
+message VersionRequest {
+
+}
+message VersionResponse {
+  string Name = 1;
+  string Version = 2;
+  string BuildTime = 3;
 }
 message SubscribeRequest {
   string topic = 1;
   string s_id = 2;
 }
+
 message SubscribeResponse {
 }
+
 message UnsubscribeRequest {
   string topic = 1;
   string s_id = 2;
 }
+
 message UnsubscribeResponse {
 }
+
 message SendRequest {
   repeated Message messages = 1;
 }
+
 message Message {
   string to = 1;
   string collapse_key = 2;
@@ -37,21 +60,26 @@ message Message {
   string data = 4;
   // TODO: notification
 }
+
 message SendResponse {
 }
+
 message ListClientsRequest {
   string user_id = 1;
 }
+
 message ListClientsResponse {
   int32 total = 1;
   int32 android = 2;
   int32 ios = 3;
   int32 web = 4;
 }
+
 message SignRequest {
   string user_id = 1;
   string source = 2;
 }
+
 message SignResponse {
   string token = 1;
 }
