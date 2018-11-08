@@ -50,7 +50,6 @@ suite('gRPC Client', function (this: Suite) {
 
   it('getUserClients', async function () {
     const res = await client.getUserClients('59294da476d70b4b83fa91a0')
-
     assert.ok(res.total >= 0)
     assert.ok(res.android >= 0)
     assert.ok(res.ios >= 0)

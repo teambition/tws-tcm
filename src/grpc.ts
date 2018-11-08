@@ -11,7 +11,7 @@ import { Client, ClientOptions, RetryOptions, delay } from 'tws-auth'
 import { loadSync } from '@grpc/proto-loader'
 
 const PROTO_PATH = path.join(__dirname, '../proto/broker.proto')
-const tcmDefinition = loadSync(PROTO_PATH)
+const tcmDefinition = loadSync(PROTO_PATH, { defaults: true })
 
 const appInfo = require(`${appRoot}/package.json`)
 const pkg = require('../package.json')
