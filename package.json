@@ -1,6 +1,6 @@
 {
   "name": "tws-tcm",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Node.js SDK of TWS (Teambition Web Service) cloud messaging service.",
   "main": "build/index.js",
   "types": "build/index.d.ts",
@@ -42,6 +42,7 @@
   },
   "files": [
     "build",
+    "proto",
     "LICENSE",
     "README.md",
     "CHANGELOG.md"
