@@ -13,7 +13,7 @@ suite('gRPC Client', function (this: Suite) {
   }
 
   const client = new TCMClient({
-    host: process.env.AUTH_SERVER as string,
+    host: process.env.TCM_HOST as string,
     appId: process.env.APP_ID as string,
     appSecrets: [process.env.APP_SECRET as string],
     timeout: 5000,

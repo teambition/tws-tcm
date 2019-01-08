@@ -64,7 +64,7 @@
 	<div class="row">
 		<div class="col-8 col-content">
 			<div class="tsd-panel tsd-typography">
-				<h1 id="tws-auth"><a href="https://github.com/teambition/tws-tcm">tws-auth</a></h1>
+				<h1 id="tws-tcm"><a href="https://github.com/teambition/tws-tcm">tws-tcm</a></h1>
 				<p>Node.js SDK of TWS (Teambition Web Service) cloud messaging service.</p>
 				<p><a href="https://www.npmjs.com/package/tws-tcm"><img src="https://img.shields.io/npm/v/tws-tcm.svg" alt="NPM version"></a>
 					<a href="https://travis-ci.org/teambition/tws-tcm"><img src="http://img.shields.io/travis/teambition/tws-tcm.svg" alt="Build Status"></a>
@@ -76,7 +76,7 @@
 
 ;(<span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
   <span class="hljs-keyword">const</span> client = <span class="hljs-keyword">new</span> TCMClient({
-    <span class="hljs-attr">host</span>: process.env.AUTH_SERVER,
+    <span class="hljs-attr">host</span>: process.env.TCM_HOST,
     <span class="hljs-attr">appId</span>: process.env.APP_ID,
     <span class="hljs-attr">appSecrets</span>: [process.env.APP_SECRET],
     <span class="hljs-attr">mode</span>: <span class="hljs-string">'grpc'</span>,
@@ -157,7 +157,7 @@
 				<h3 id="more-https-teambition-github-io-tws-tcm-">More: <a href="https://teambition.github.io/tws-tcm/">https://teambition.github.io/tws-tcm/</a></h3>
 				<h2 id="license">License</h2>
 				<p><code>tws-tcm</code> is licensed under the <a href="https://github.com/teambition/tws-tcm/blob/master/LICENSE">MIT</a> license.
-				Copyright &copy; 2017-2018 Teambition.</p>
+				Copyright &copy; 2017-2019 Teambition.</p>
 			</div>
 		</div>
 		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">

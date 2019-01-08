@@ -1,6 +1,6 @@
 {
   "name": "tws-tcm",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Node.js SDK of TWS (Teambition Web Service) cloud messaging service.",
   "main": "build/index.js",
   "types": "build/index.d.ts",
@@ -25,20 +25,20 @@
   "dependencies": {
     "@grpc/proto-loader": "^0.3.0",
     "app-root-path": "^2.1.0",
-    "grpc": "^1.16.1",
-    "tws-auth": "^3.1.1",
+    "grpc": "^1.17.0",
+    "tws-auth": "^3.2.0",
     "user-agent-composer": "^0.1.2"
   },
   "devDependencies": {
     "@types/app-root-path": "^1.2.4",
-    "@types/node": "^10.12.10",
+    "@types/node": "^10.12.18",
     "standard": "^12.0.1",
     "tman": "^1.8.1",
     "ts-node": "^7.0.1",
-    "tslint": "^5.11.0",
+    "tslint": "^5.12.0",
     "tslint-eslint-rules": "^5.4.0",
-    "typedoc": "^0.13.0",
-    "typescript": "^3.1.6"
+    "typedoc": "^0.14.0",
+    "typescript": "^3.2.2"
   },
   "files": [
     "build",

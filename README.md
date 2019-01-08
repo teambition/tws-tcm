@@ -1,4 +1,4 @@
-# [tws-auth](https://github.com/teambition/tws-tcm)
+# [tws-tcm](https://github.com/teambition/tws-tcm)
 Node.js SDK of TWS (Teambition Web Service) cloud messaging service.
 
 [![NPM version][npm-image]][npm-url]
@@ -19,7 +19,7 @@ const { TCMClient } = require('tws-tcm')
 
 ;(async function () {
   const client = new TCMClient({
-    host: process.env.AUTH_SERVER,
+    host: process.env.TCM_HOST,
     appId: process.env.APP_ID,
     appSecrets: [process.env.APP_SECRET],
     mode: 'grpc',
@@ -110,7 +110,7 @@ export declare class TCMClient {
 
 ## License
 `tws-tcm` is licensed under the [MIT](https://github.com/teambition/tws-tcm/blob/master/LICENSE) license.
-Copyright &copy; 2017-2018 Teambition.
+Copyright &copy; 2017-2019 Teambition.
 
 [npm-url]: https://www.npmjs.com/package/tws-tcm
 [npm-image]: https://img.shields.io/npm/v/tws-tcm.svg
