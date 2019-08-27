@@ -64,13 +64,20 @@
 	<div class="row">
 		<div class="col-8 col-content">
 			<div class="tsd-panel tsd-typography">
-				<h1 id="tws-tcm"><a href="https://github.com/teambition/tws-tcm">tws-tcm</a></h1>
+				<a href="#a-hrefhttpsgithubcomteambitiontws-tcmtws-tcma" id="a-hrefhttpsgithubcomteambitiontws-tcmtws-tcma" style="color: inherit; text-decoration: none;">
+					<h1><a href="https://github.com/teambition/tws-tcm">tws-tcm</a></h1>
+				</a>
 				<p>Node.js SDK of TWS (Teambition Web Service) cloud messaging service.</p>
 				<p><a href="https://www.npmjs.com/package/tws-tcm"><img src="https://img.shields.io/npm/v/tws-tcm.svg" alt="NPM version"></a>
 					<a href="https://travis-ci.org/teambition/tws-tcm"><img src="http://img.shields.io/travis/teambition/tws-tcm.svg" alt="Build Status"></a>
 				<a href="https://npmjs.org/package/tws-tcm"><img src="https://img.shields.io/npm/dm/tws-tcm.svg?style=flat-square" alt="Downloads"></a></p>
-				<h2 id="installation">Installation</h2>
-				<pre><code>npm <span class="hljs-selector-tag">i</span> --save tws-tcm</code></pre><h2 id="usage">Usage</h2>
+				<a href="#installation" id="installation" style="color: inherit; text-decoration: none;">
+					<h2>Installation</h2>
+				</a>
+				<pre><code>npm <span class="hljs-selector-tag">i</span> --save tws-tcm</code></pre>
+				<a href="#usage" id="usage" style="color: inherit; text-decoration: none;">
+					<h2>Usage</h2>
+				</a>
 				<pre><code class="language-js"><span class="hljs-meta">'use strict'</span>
 <span class="hljs-keyword">const</span> { TCMClient } = <span class="hljs-built_in">require</span>(<span class="hljs-string">'tws-tcm'</span>)
 
@@ -78,8 +85,7 @@
   <span class="hljs-keyword">const</span> client = <span class="hljs-keyword">new</span> TCMClient({
     <span class="hljs-attr">host</span>: process.env.TCM_HOST,
     <span class="hljs-attr">appId</span>: process.env.APP_ID,
-    <span class="hljs-attr">appSecrets</span>: [process.env.APP_SECRET],
-    <span class="hljs-attr">mode</span>: <span class="hljs-string">'grpc'</span>,
+    <span class="hljs-attr">appSecrets</span>: [process.env.APP_SECRET]
   })
 
   <span class="hljs-comment">// HTTP</span>
@@ -96,13 +102,17 @@
     <span class="hljs-attr">data</span>: <span class="hljs-string">'data2'</span>
   }])
 })(<span class="hljs-built_in">console</span>.error)</code></pre>
-				<h2 id="documentation">Documentation</h2>
+				<a href="#documentation" id="documentation" style="color: inherit; text-decoration: none;">
+					<h2>Documentation</h2>
+				</a>
 				<pre><code class="language-js"><span class="hljs-keyword">const</span> { TCMClient } = <span class="hljs-built_in">require</span>(<span class="hljs-string">'tws-tcm'</span>)</code></pre>
-				<h3 id="new-client-appid-appsecret-host-timeout-cachestore-rootcert-privatekey-certchain-">new Client({ appId, appSecret[, host, timeout, cacheStore, rootCert, privateKey, certChain] })</h3>
+				<a href="#new-client-appid-appsecret-host-timeout-cachestore-rootcert-privatekey-certchain-" id="new-client-appid-appsecret-host-timeout-cachestore-rootcert-privatekey-certchain-" style="color: inherit; text-decoration: none;">
+					<h3>new Client({ appId, appSecret[, host, timeout, cacheStore, rootCert, privateKey, certChain] })</h3>
+				</a>
 				<ul>
 					<li>appId <code>String</code> : The ID of your TWS application.</li>
 					<li>appSecrets: <code>[]String</code> : The secret passwords of your TWS application.</li>
-					<li>host <code>String</code> : Optional, host URL of TWS authorization service, by default is <code>&#39;https://auth.teambitionapis.com&#39;</code>.</li>
+					<li>host <code>String</code> : Host URL of TCM service.</li>
 					<li>timeout <code>Number</code> : Optional, requst timeout in milliseconds, by default is <code>3000</code>.</li>
 					<li>rootCert <code>Buffer</code> : Optional, the client root certificate.</li>
 					<li>privateKey <code>Buffer</code> : Optional, the client certificate private key.</li>
@@ -112,9 +122,10 @@
 					<li>retryDelay <code>Number</code> : Optional, delay time for retry, default to 200 ms.</li>
 					<li>maxAttempts <code>Number</code> : Optional, max attempts for a request, default to 3 times.</li>
 					<li>retryErrorCodes <code>[]String</code> : Optional, error codes that should retry, default to <code>[&#39;ECONNRESET&#39;, &#39;ENOTFOUND&#39;, &#39;ESOCKETTIMEDOUT&#39;, &#39;ETIMEDOUT&#39;, &#39;ECONNREFUSED&#39;, &#39;EHOSTUNREACH&#39;, &#39;EPIPE&#39;, &#39;EAI_AGAIN&#39;]</code>.</li>
-					<li>mode <code>string</code>: use HTTP <code>http</code> or gRPC <code>grpc</code>, default to <code>http</code></li>
 				</ul>
-				<h3 id="tcmclient-api">TCMClient API</h3>
+				<a href="#tcmclient-api" id="tcmclient-api" style="color: inherit; text-decoration: none;">
+					<h3>TCMClient API</h3>
+				</a>
 				<pre><code class="language-ts"><span class="hljs-comment">/**
  * Client for TWS (Teambition Web Service) cloud messaging service..
  */</span>
@@ -154,8 +165,12 @@
      */
     heartBeat(<span class="hljs-params"></span>): Promise&lt;HeartBeat&gt;;
 }</code></pre>
-				<h3 id="more-https-teambition-github-io-tws-tcm-">More: <a href="https://teambition.github.io/tws-tcm/">https://teambition.github.io/tws-tcm/</a></h3>
-				<h2 id="license">License</h2>
+				<a href="#more-a-hrefhttpsteambitiongithubiotws-tcmhttpsteambitiongithubiotws-tcma" id="more-a-hrefhttpsteambitiongithubiotws-tcmhttpsteambitiongithubiotws-tcma" style="color: inherit; text-decoration: none;">
+					<h3>More: <a href="https://teambition.github.io/tws-tcm/">https://teambition.github.io/tws-tcm/</a></h3>
+				</a>
+				<a href="#license" id="license" style="color: inherit; text-decoration: none;">
+					<h2>License</h2>
+				</a>
 				<p><code>tws-tcm</code> is licensed under the <a href="https://github.com/teambition/tws-tcm/blob/master/LICENSE">MIT</a> license.
 				Copyright &copy; 2017-2019 Teambition.</p>
 			</div>
@@ -165,9 +180,6 @@
 				<ul>
 					<li class="globals  ">
 						<a href="globals.html"><em>Globals</em></a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="modules/_grpc_.html">"grpc"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
 						<a href="modules/_http_.html">"http"</a>
@@ -196,6 +208,7 @@
 				<li class="tsd-kind-function tsd-has-type-parameter"><span class="tsd-kind-icon">Function with type parameter</span></li>
 				<li class="tsd-kind-index-signature"><span class="tsd-kind-icon">Index signature</span></li>
 				<li class="tsd-kind-type-alias"><span class="tsd-kind-icon">Type alias</span></li>
+				<li class="tsd-kind-type-alias tsd-has-type-parameter"><span class="tsd-kind-icon">Type alias with type parameter</span></li>
 			</ul>
 			<ul class="tsd-legend">
 				<li class="tsd-kind-enum"><span class="tsd-kind-icon">Enumeration</span></li>
@@ -244,7 +257,7 @@
 	</div>
 </footer>
 <div class="container tsd-generator">
-	<p>Generated using <a href="http://typedoc.org/" target="_blank">TypeDoc</a></p>
+	<p>Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a></p>
 </div>
 <div class="overlay"></div>
 <script src="assets/js/main.js"></script>

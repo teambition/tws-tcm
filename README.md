@@ -21,8 +21,7 @@ const { TCMClient } = require('tws-tcm')
   const client = new TCMClient({
     host: process.env.TCM_HOST,
     appId: process.env.APP_ID,
-    appSecrets: [process.env.APP_SECRET],
-    mode: 'grpc',
+    appSecrets: [process.env.APP_SECRET]
   })
 
   // HTTP
@@ -51,7 +50,7 @@ const { TCMClient } = require('tws-tcm')
 
 - appId `String` : The ID of your TWS application.
 - appSecrets: `[]String` : The secret passwords of your TWS application.
-- host `String` : Optional, host URL of TWS authorization service, by default is `'https://auth.teambitionapis.com'`.
+- host `String` : Host URL of TCM service.
 - timeout `Number` : Optional, requst timeout in milliseconds, by default is `3000`.
 - rootCert `Buffer` : Optional, the client root certificate.
 - privateKey `Buffer` : Optional, the client certificate private key.
@@ -61,7 +60,6 @@ const { TCMClient } = require('tws-tcm')
 - retryDelay `Number` : Optional, delay time for retry, default to 200 ms.
 - maxAttempts `Number` : Optional, max attempts for a request, default to 3 times.
 - retryErrorCodes `[]String` : Optional, error codes that should retry, default to `['ECONNRESET', 'ENOTFOUND', 'ESOCKETTIMEDOUT', 'ETIMEDOUT', 'ECONNREFUSED', 'EHOSTUNREACH', 'EPIPE', 'EAI_AGAIN']`.
-- mode `string`: use HTTP `http` or gRPC `grpc`, default to `http`
 
 ### TCMClient API
 ```ts

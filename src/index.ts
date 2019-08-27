@@ -1,6 +1,5 @@
 'use strict'
 
-import { GRPCClient } from './grpc'
 import { HTTPClient } from './http'
 import { ClientOptions, RetryOptions } from 'tws-auth'
 
@@ -13,7 +12,7 @@ interface TCMMethods {
   heartBeat<T> (): Promise<T>
 }
 
-export type TCMOptions = ClientOptions & RetryOptions & { mode: string }
+export type TCMOptions = ClientOptions & RetryOptions
 
 export interface UserClients {
   total: number
@@ -45,12 +44,7 @@ export interface Version {
 export class TCMClient {
   private _client: TCMMethods
   constructor (options: TCMOptions) {
-    let mode = 'http'
-    if (options.mode != null && typeof options.mode === 'string') {
-      mode = options.mode.toLowerCase()
-    }
-
-    this._client = mode === 'http' ? new HTTPClient(options) : new GRPCClient(options)
+    this._client = new HTTPClient(options)
   }
 
   /**

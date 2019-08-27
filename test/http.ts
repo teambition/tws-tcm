@@ -15,8 +15,7 @@ suite('HTTP Client', function (this: Suite) {
     host: process.env.TCM_HOST as string,
     appId: process.env.APP_ID as string,
     appSecrets: [process.env.APP_SECRET as string],
-    timeout: 5000,
-    mode: 'http',
+    timeout: 5000
   })
 
   it('subscribe', async function () {
