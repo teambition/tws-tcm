@@ -25,6 +25,13 @@ export class HTTPClient extends Client {
     )
   }
 
+  batchSubscribe<T> (body: any) {
+    return this.post<T>(
+      '/v1/subscribe:batch',
+      body,
+    )
+  }
+
   unsubscribe<T> (topic: string, sessionId: string) {
     return this.post<T>(
       '/unsubscribe',

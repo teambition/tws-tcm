@@ -5,6 +5,7 @@ import { ClientOptions, RetryOptions } from 'tws-auth'
 
 interface TCMMethods {
   subscribe<T> (topic: string, sessionId: string): Promise<T>
+  batchSubscribe<T> (body: any): Promise<T>
   unsubscribe<T> (topic: string, sessionId: string): Promise<T>
   send<T> (body: any): Promise<T>
   getUserClients<T> (_userId: string): Promise<T>
@@ -54,6 +55,10 @@ export class TCMClient {
    */
   subscribe (topic: string, sessionId: string) {
     return this._client.subscribe<{}>(topic, sessionId)
+  }
+
+  batchSubscribe (body: any) {
+    return this._client.batchSubscribe<{}>(body)
   }
 
   /**
