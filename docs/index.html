@@ -74,7 +74,7 @@
 				<a href="#installation" id="installation" style="color: inherit; text-decoration: none;">
 					<h2>Installation</h2>
 				</a>
-				<pre><code>npm <span class="hljs-selector-tag">i</span> --save tws-tcm</code></pre>
+				<pre><code>npm i <span class="hljs-comment">--save tws-tcm</span></code></pre>
 				<a href="#usage" id="usage" style="color: inherit; text-decoration: none;">
 					<h2>Usage</h2>
 				</a>
@@ -132,38 +132,38 @@
 <span class="hljs-keyword">export</span> <span class="hljs-keyword">declare</span> <span class="hljs-keyword">class</span> TCMClient {
     <span class="hljs-keyword">private</span> _client;
     <span class="hljs-keyword">constructor</span>(<span class="hljs-params">options: TCMOptions</span>);
-    /**
+    <span class="hljs-comment">/**
      * subscribe a topic with given sessionId.
      * @param topic message topic.
      * @param sessionId user session ID.
-     */
-    subscribe(<span class="hljs-params">topic: <span class="hljs-built_in">string</span>, sessionId: <span class="hljs-built_in">string</span></span>): Promise&lt;void&gt;;
-    /**
+     */</span>
+    subscribe(topic: <span class="hljs-built_in">string</span>, sessionId: <span class="hljs-built_in">string</span>): <span class="hljs-built_in">Promise</span>&lt;<span class="hljs-built_in">void</span>&gt;;
+    <span class="hljs-comment">/**
      * unsubscribe a topic with given sessionId.
      * @param topic message topic.
      * @param sessionId user session ID.
-     */
-    unsubscribe(<span class="hljs-params">topic: <span class="hljs-built_in">string</span>, sessionId: <span class="hljs-built_in">string</span></span>): Promise&lt;void&gt;;
-    /**
+     */</span>
+    unsubscribe(topic: <span class="hljs-built_in">string</span>, sessionId: <span class="hljs-built_in">string</span>): <span class="hljs-built_in">Promise</span>&lt;<span class="hljs-built_in">void</span>&gt;;
+    <span class="hljs-comment">/**
      * send one or more messages.
      * @param body message array.
-     */
-    send(<span class="hljs-params">body: Message[]</span>): Promise&lt;void&gt;;
-    /**
+     */</span>
+    send(body: Message[]): <span class="hljs-built_in">Promise</span>&lt;<span class="hljs-built_in">void</span>&gt;;
+    <span class="hljs-comment">/**
      * get online info for given user.
      * @param userId user ID.
-     */
-    getUserClients(<span class="hljs-params">userId: <span class="hljs-built_in">string</span></span>): Promise&lt;UserClients&gt;;
-    /**
+     */</span>
+    getUserClients(userId: <span class="hljs-built_in">string</span>): <span class="hljs-built_in">Promise</span>&lt;UserClients&gt;;
+    <span class="hljs-comment">/**
      * get a TCM token for given user.
      * @param userId user ID.
      * @param source client label.
-     */
-    sign(<span class="hljs-params">userId: <span class="hljs-built_in">string</span>, source: <span class="hljs-built_in">string</span></span>): Promise&lt;Token&gt;;
-    /**
+     */</span>
+    sign(userId: <span class="hljs-built_in">string</span>, source: <span class="hljs-built_in">string</span>): <span class="hljs-built_in">Promise</span>&lt;Token&gt;;
+    <span class="hljs-comment">/**
      * Just heart beat.
-     */
-    heartBeat(<span class="hljs-params"></span>): Promise&lt;HeartBeat&gt;;
+     */</span>
+    heartBeat(): <span class="hljs-built_in">Promise</span>&lt;HeartBeat&gt;;
 }</code></pre>
 				<a href="#more-a-hrefhttpsteambitiongithubiotws-tcmhttpsteambitiongithubiotws-tcma" id="more-a-hrefhttpsteambitiongithubiotws-tcmhttpsteambitiongithubiotws-tcma" style="color: inherit; text-decoration: none;">
 					<h3>More: <a href="https://teambition.github.io/tws-tcm/">https://teambition.github.io/tws-tcm/</a></h3>
@@ -182,10 +182,10 @@
 						<a href="globals.html"><em>Globals</em></a>
 					</li>
 					<li class=" tsd-kind-external-module">
-						<a href="modules/_http_.html">"http"</a>
+						<a href="modules/_http_.html">&quot;http&quot;</a>
 					</li>
 					<li class=" tsd-kind-external-module">
-						<a href="modules/_index_.html">"index"</a>
+						<a href="modules/_index_.html">&quot;index&quot;</a>
 					</li>
 				</ul>
 			</nav>
